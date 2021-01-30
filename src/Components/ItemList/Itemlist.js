@@ -1,5 +1,6 @@
 import './Itemlist.css';
 import React from 'react';
+import Recipes from '../../Util/spoonacular';
 
 export class Itemlist extends React.Component{
   constructor(props){
@@ -35,6 +36,7 @@ export class Itemlist extends React.Component{
   }
   retrieveRecipes(){
     // Will call for API here
+    Recipes.search(this.state.itemList);
   }
 
   showRecipeButton(){
