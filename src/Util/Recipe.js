@@ -7,7 +7,7 @@ const Recipe = {
         var request = new XMLHttpRequest();
     
     
-        request.open('GET', 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=dea3295cc19c4fbdaa1a5b3f31e92f55', true);
+        request.open('GET', 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=1e7bca06d34a4d629587bc834859e547', true);
         request.onload = function () {
             // Begin accessing JSON data here
             var data = JSON.parse(this.response);
