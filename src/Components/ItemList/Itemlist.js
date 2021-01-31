@@ -1,6 +1,7 @@
 import './Itemlist.css';
 import React from 'react';
 import Recipe from '../../Util/Recipe';
+import {Item} from '../Item/Item';
 
 export class Itemlist extends React.Component{
   constructor(props){
@@ -12,6 +13,7 @@ export class Itemlist extends React.Component{
         searchResults : []
     }
   }
+  
   updateInput(itemId, itemName){
         this.setState({
             [itemId]: itemName
@@ -39,16 +41,18 @@ export class Itemlist extends React.Component{
     // Will call for API here
     let recipeArray = [];
     recipeArray = Recipe.search(this.state.itemList);
-    
+    this.setState({
+        searchResults: recipeArray
+    })
     
   }
-
   showRecipeButton(){
       if (this.state.itemList.length > 0){
           return (
                 <button onClick = {() => this.retrieveRecipes()}>Find Recipes</button>
           )
       }
+      
   }
 
   render(){
@@ -76,8 +80,14 @@ export class Itemlist extends React.Component{
               )}
           </ul>
           {this.showRecipeButton()}
+          <div className = "Items">
+            {this.state.searchResults.map((item) => {
+                return <Item recipeName = {item["title"]} imageUrl = {item["image"]}></Item>
+            })}
+          </div>
+        </div>
           
-      </div>
+      
     );
   }
   
