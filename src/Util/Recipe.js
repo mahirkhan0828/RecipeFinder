@@ -4,16 +4,18 @@ const Recipe = {
     search(foodItems){
         let arr = [];
         var request = new XMLHttpRequest();
-        
+        // console.log(foodItems);
         var URL =  'https://api.spoonacular.com/recipes/findByIngredients?ingredients=';
-        URL.concat(foodItems[0]["name"]);
+        URL = URL.concat(foodItems[0]["name"]);
         for (let i = 1; i < foodItems.length; i++) {
-            URL.concat(',+');
-            URL.concat(foodItems[i]["name"]);
+            URL = URL.concat(',+');
+            URL = URL.concat(foodItems[i]["name"]);
         }
-        URL.concat('&number=25');
-        URL.concat('&apiKey=');
-        URL.concat(API_KEY);
+        URL = URL.concat('&number=25');
+        URL = URL.concat('&apiKey=');
+        URL = URL.concat(API_KEY);
+        // URL = URL.concat('1e7bca06d34a4d629587bc834859e547');
+        console.log(URL);
     
         request.open('GET', URL, true);
         request.onload = function () {
