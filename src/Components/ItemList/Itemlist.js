@@ -1,6 +1,6 @@
 import './Itemlist.css';
 import React from 'react';
-import Recipes from '../../Util/spoonacular';
+import Recipe from '../../Util/Recipe';
 
 export class Itemlist extends React.Component{
   constructor(props){
@@ -8,7 +8,8 @@ export class Itemlist extends React.Component{
     this.state = {
         item : "",
         itemList : [],
-        currId: 1
+        currId: 1,
+        searchResults : []
     }
   }
   updateInput(itemId, itemName){
@@ -36,7 +37,10 @@ export class Itemlist extends React.Component{
   }
   retrieveRecipes(){
     // Will call for API here
-    Recipes.search(this.state.itemList);
+    let recipeArray = [];
+    recipeArray = Recipe.search(this.state.itemList);
+    
+    
   }
 
   showRecipeButton(){
